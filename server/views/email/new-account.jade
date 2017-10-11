@@ -1,0 +1,7 @@
+extends email-layout
+
+block content
+    h2 New User
+    p Hello and thank you signing up for this website. Please click the following button to log in to the website automatically.
+    +button(tokenURL, 'Login Now→')
+    p If you can't click the above button, please visit #{tokenURL}
