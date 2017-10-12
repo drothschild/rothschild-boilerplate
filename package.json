@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start":
-      "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && yarn start \" ",
+      "concurrently  \"PORT=3001 node bin/www --ignore client\" \"cd client && yarn start \" ",
     "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
   },
   "engines": {
