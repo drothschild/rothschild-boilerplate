@@ -12,7 +12,7 @@ class TokenLogin extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.data.user) {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/');
     }
   }
 

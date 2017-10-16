@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import AuthForm from "./AuthForm";
-import mutation from "../mutations/Login";
-import { graphql } from "react-apollo";
-import query from "../queries/CurrentUser";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import AuthForm from './AuthForm';
+import mutation from '../mutations/Login';
+import { graphql } from 'react-apollo';
+import query from '../queries/CurrentUser';
+import { withRouter } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class LoginForm extends Component {
 
   componentWillUpdate(nextProps) {
     if (!this.props.data.user && nextProps.data.user) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/');
     }
   }
 
@@ -21,7 +21,7 @@ class LoginForm extends Component {
     this.props
       .mutate({
         variables: { email, password },
-        refetchQueries: [{ query }]
+        refetchQueries: [{ query }],
       })
       .catch(res => {
         const errors = res.graphQLErrors.map(error => error.message);
@@ -33,10 +33,7 @@ class LoginForm extends Component {
     return (
       <div>
         <h3>Login</h3>
-        <AuthForm
-          errors={this.state.errors}
-          onSubmit={this.onSubmit.bind(this)}
-        />
+        <AuthForm errors={this.state.errors} onSubmit={this.onSubmit.bind(this)} />
       </div>
     );
   }
