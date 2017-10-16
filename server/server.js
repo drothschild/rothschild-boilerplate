@@ -48,8 +48,4 @@ app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
-app.listen(PORT, function() {
-  console.log(`Listening on port ${PORT}`);
-});
-
 module.exports = app;
