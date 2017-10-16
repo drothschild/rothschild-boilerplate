@@ -10,7 +10,7 @@
   },
   "cacheDirectories": ["node_modules", "client/node_modules"],
 
-  "description": "GraphQL backend ",
+  "description": "GraphQL backend of users and passpost",
 
   "engines": {
     "node": ">= 7.6.0"
