@@ -3,15 +3,14 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node bin/www --ignore client",
-    "dev":
-      "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && npm start \" ",
-    "heroku-postbuild":
-      "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev": "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && npm start \" ",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "cacheDirectories": ["node_modules", "client/node_modules"],
-
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "description": "GraphQL backend of users and passpost",
-
   "engines": {
     "node": ">= 7.6.0"
   },
@@ -37,8 +36,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-url": "^1.0.4",
+    "path": "^0.12.7",
     "promisify": "0.0.3",
-
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
