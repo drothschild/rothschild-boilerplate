@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import { Link } from 'react-router-dom';
 import query from '../queries/CurrentUser';
 import mutation from '../mutations/Logout';
-
+import AppBar from 'material-ui/AppBar';
+import FlatButton from 'material-ui/FlatButton';
 class Header extends Component {
   onLogoutClick() {
     this.props.mutate({
@@ -20,37 +20,22 @@ class Header extends Component {
     if (user) {
       return (
         <div>
-          <li>{user.email}</li>
-          <li>
-            <a onClick={this.onLogoutClick.bind(this)}>Logout</a>
-          </li>
-          <li>
-            <Link to="/editAccount">Edit Account</Link>
-          </li>
+          {user.email}
+          <FlatButton label="Edit Account" href="/editaccount" />
+          <FlatButton onClick={this.onLogoutClick.bind(this)} label="Logout" />
         </div>
       );
     }
     return (
       <div>
-        <li>
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        <FlatButton label="Sign Up" href="/signup" />
+        <FlatButton label="Login" href="/login" />
       </div>
     );
   }
 
   render() {
-    return (
-      <nav>
-        <div className="nav-wrapper">
-          <Link to="/">Home</Link>
-          <ul className="right">{this.renderButtons()}</ul>
-        </div>
-      </nav>
-    );
+    return <AppBar title="App" iconElementRight={this.renderButtons()} />;
   }
 }
 

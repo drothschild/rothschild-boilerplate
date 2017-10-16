@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-
+import React, { Component } from 'react';
+import TextField from 'material-ui/TextField';
 class AuthForm extends Component {
   constructor(props) {
     super(props);
-    let email = "";
+    let email = '';
     if (props.email) {
       email = props.email;
     }
-    this.state = { email, password: "" };
+    this.state = { email, password: '' };
   }
 
   onSubmit(event) {
@@ -20,24 +20,20 @@ class AuthForm extends Component {
     return (
       <div className="row">
         <form onSubmit={this.onSubmit.bind(this)} className="col s6">
-          <div className="input-field">
-            <input
-              placeholder="Email"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </div>
-          <div className="input-field">
-            <input
-              placeholder="Password"
+          <TextField
+            hintText="Email"
+            value={this.state.email}
+            onChange={e => this.setState({ email: e.target.value })}
+          />
+          <div>
+            <TextField
+              hintText="Password"
               type="password"
               value={this.state.password}
               onChange={e => this.setState({ password: e.target.value })}
             />
           </div>
-          <div className="errors">
-            {this.props.errors.map(error => <div key={error}>{error}</div>)}
-          </div>
+          <div className="errors">{this.props.errors.map(error => <div key={error}>{error}</div>)}</div>
           <button className="btn">Submit</button>
         </form>
       </div>
