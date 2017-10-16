@@ -1,8 +1,8 @@
 {
   "name": "rothschild-boilerplate-back-end",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "start": "node bin/www --ignore client",
+    "start": "node bin/www",
     "dev":
       "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && npm start \" ",
     "heroku-postbuild":
