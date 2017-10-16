@@ -49,10 +49,12 @@ async function signup({ email, password, req }) {
   }
   await user.save();
   token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
-    expiresIn: '12h',
+    expiresIn: '12h'
   });
   console.log('headers', req.headers);
-  host = req.headers['x-forwarded-host'];
+  host = req.headers['x-forwarded-host']
+    ? req.headers['x-forwarded-host']
+    : req.headers['host'];
   tokenURL = `http://${host}/token/${token}`;
   console.log('tokenURL ', tokenURL);
   await mail.send({
