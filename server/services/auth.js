@@ -60,7 +60,7 @@ async function signup({ email, password, req }) {
   await mail.send({
     user,
     filename: 'new-account',
-    subject: 'New user Account',
+    subject: 'New User Account',
     tokenURL,
   });
   return new Promise((resolve, reject) => {
