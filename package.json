@@ -38,7 +38,7 @@
     "passport-local": "^1.0.0",
     "passport-url": "^1.0.4",
     "promisify": "0.0.3",
-    "react-scripts": "^1.0.14",
+
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
@@ -60,6 +60,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "prettier": "1.7.4"
+    "prettier": "1.7.4",
+    "react-scripts": "^1.0.14"
   }
 }
