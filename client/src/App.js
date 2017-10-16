@@ -34,7 +34,7 @@ class App extends Component {
           <Router>
             <div>
               <Header />
-              <Route path="/" component={requireAuth(Dashboard)} />
+              <Route path="/dashboard" component={requireAuth(Dashboard)} />
               <Route path="/login" component={LoginForm} />
               <Route path="/signup" component={SignupForm} />
               <Route path="/editAccount" component={requireAuth(EditAccountForm)} />
