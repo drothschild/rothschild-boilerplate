@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node bin/www --ignore client",
-    "dev": "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && npm start \" ",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev":
+      "concurrently  \"PORT=3001 nodemon bin/www --ignore client\" \"cd client && npm start \" ",
+    "heroku-postbuild":
+      "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
-  ],
+  "cacheDirectories": ["node_modules", "client/node_modules"],
   "description": "GraphQL backend of users and passpost",
   "engines": {
     "node": ">= 7.6.0"
@@ -37,7 +36,6 @@
     "passport-local": "^1.0.0",
     "passport-url": "^1.0.4",
     "path": "^0.12.7",
-    "promisify": "0.0.3",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
@@ -48,7 +46,7 @@
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.0",
     "eslint": "^4.8.0",
-    "eslint-config-airbnb": "^16.0.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-config-prettier": "^2.6.0",
     "eslint-config-react-app": "^2.0.1",
