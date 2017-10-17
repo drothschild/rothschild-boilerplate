@@ -38,25 +38,23 @@ passport.use(
 );
 
 async function signup({ email, password, req }) {
-  const user = await new User({ email, password });
-  let token, host, tokenURL;
   if (!email || !password) {
     throw new Error('You must provide an email and password.');
   }
+  const user = await new User({ email, password });
+  let token, host, tokenURL;
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     throw new Error('Email already registered.');
   }
   await user.save();
   token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
-    expiresIn: '12h'
+    expiresIn: '12h',
   });
-  console.log('headers', req.headers);
   host = req.headers['x-forwarded-host']
     ? req.headers['x-forwarded-host']
     : req.headers['host'];
   tokenURL = `http://${host}/token/${token}`;
-  console.log('tokenURL ', tokenURL);
   await mail.send({
     user,
     filename: 'new-account',
