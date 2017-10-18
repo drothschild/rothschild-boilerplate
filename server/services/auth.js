@@ -48,19 +48,7 @@ async function signup({ email, password, req }) {
     throw new Error('Email already registered.');
   }
   await user.save();
-  token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
-    expiresIn: '12h',
-  });
-  host = req.headers['x-forwarded-host']
-    ? req.headers['x-forwarded-host']
-    : req.headers['host'];
-  tokenURL = `http://${host}/token/${token}`;
-  await mail.send({
-    user,
-    filename: 'new-account',
-    subject: 'New User Account',
-    tokenURL,
-  });
+  await createLoginToken(user);
   return new Promise((resolve, reject) => {
     req.logIn(user, err => {
       if (err) {
@@ -71,15 +59,22 @@ async function signup({ email, password, req }) {
   });
 }
 
-function login({ email, password, req }) {
-  return new Promise((resolve, reject) => {
-    passport.authenticate('local', (err, user) => {
-      if (!user) {
-        reject('Invalid credentials.');
-      }
+async function createLoginToken(user) {
+  const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
+    expiresIn: '12h',
+  });
 
-      req.login(user, () => resolve(user));
-    })({ body: { email, password } });
+  const host = req.headers['x-forwarded-host']
+    ? req.headers['x-forwarded-host']
+    : req.headers['host'];
+  const tokenURL = `http://${host}/token/${token}`;
+  // Normally I'd leave console log out- but just in case the mail fails..
+  console.log('Magic Token', tokenURL);
+  await mail.send({
+    user,
+    filename: 'new-account',
+    subject: 'New User Account',
+    tokenURL,
   });
 }
 
